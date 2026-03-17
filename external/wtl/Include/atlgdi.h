@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -2207,7 +2207,7 @@ public:
 
 // Extra bitmap functions
 	// Helper function for painting a disabled toolbar or menu bitmap
-	// This function can take either an HBITMAP (for SS) or a DC with 
+	// This function can take either an HBITMAP (for SS) or a DC with
 	//           the bitmap already painted (for cmdbar)
 	BOOL DitherBlt(int x, int y, int nWidth, int nHeight, HDC hSrcDC, HBITMAP hBitmap, int xSrc, int ySrc,
 			HBRUSH hBrushBackground = ::GetSysColorBrush(COLOR_3DFACE),
@@ -2216,13 +2216,13 @@ public:
 	{
 		ATLASSERT((m_hDC != NULL) || (hBitmap != NULL));
 		ATLASSERT((nWidth > 0) && (nHeight > 0));
-		
+
 		// Create a generic DC for all BitBlts
 		CDCT<false> dc = (hSrcDC != NULL) ? hSrcDC : ::CreateCompatibleDC(m_hDC);
 		ATLASSERT(dc.m_hDC != NULL);
 		if(dc.m_hDC == NULL)
 			return FALSE;
-		
+
 		// Create a DC for the monochrome DIB section
 		CDCT<true> dcBW = ::CreateCompatibleDC(m_hDC);
 		ATLASSERT(dcBW.m_hDC != NULL);
@@ -2236,11 +2236,11 @@ public:
 		// Create the monochrome DIB section with a black and white palette
 		struct RGBBWBITMAPINFO
 		{
-			BITMAPINFOHEADER bmiHeader; 
-			RGBQUAD bmiColors[2]; 
+			BITMAPINFOHEADER bmiHeader;
+			RGBQUAD bmiColors[2];
 		};
 
-		RGBBWBITMAPINFO rgbBWBitmapInfo = 
+		RGBBWBITMAPINFO rgbBWBitmapInfo =
 		{
 			{ sizeof(BITMAPINFOHEADER), nWidth, nHeight, 1, 1, BI_RGB, 0, 0, 0, 0, 0 },
 			{ { 0x00, 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF, 0x00 } }
@@ -2255,7 +2255,7 @@ public:
 				dc.DeleteDC();
 			return FALSE;
 		}
-		
+
 		// Attach the monochrome DIB section and the bitmap to the DCs
 		HBITMAP hbmOldBW = dcBW.SelectBitmap(bmpBW);
 		HBITMAP hbmOldDC = NULL;
@@ -2290,7 +2290,7 @@ public:
 			dcTemp1.SelectBitmap(hOldBmp1);
 			dcTemp2.SelectBitmap(hOldBmp2);
 		}
-		
+
 		// Paint the destination rectangle using hBrushBackground
 		if(hBrushBackground != NULL)
 		{
@@ -2692,7 +2692,7 @@ public:
 			pDC->SetViewportOrg((int)(short)pMetaRec->rdParm[1], (int)(short)pMetaRec->rdParm[0]);
 			break;
 		case META_SCALEWINDOWEXT:
-			pDC->ScaleWindowExt((int)(short)pMetaRec->rdParm[3], (int)(short)pMetaRec->rdParm[2], 
+			pDC->ScaleWindowExt((int)(short)pMetaRec->rdParm[3], (int)(short)pMetaRec->rdParm[2],
 				(int)(short)pMetaRec->rdParm[1], (int)(short)pMetaRec->rdParm[0]);
 			break;
 		case META_SCALEVIEWPORTEXT:

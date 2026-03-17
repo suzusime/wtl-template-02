@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -30,8 +30,8 @@
 
 // Note: To create an application that also runs on older versions of Windows,
 // use delay load of dwmapi.dll and ensure that no calls to the DWM API are
-// Delay load is NOT AUTOMATIC for VC++ 7, you have to link to delayimp.lib, 
-// and add dwmapi.dll in the Linker.Input.Delay Loaded DLLs section of the 
+// Delay load is NOT AUTOMATIC for VC++ 7, you have to link to delayimp.lib,
+// and add dwmapi.dll in the Linker.Input.Delay Loaded DLLs section of the
 // project properties.
 
 

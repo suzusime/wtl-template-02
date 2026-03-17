@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -43,12 +43,12 @@ namespace WTL
 {
 
 ///////////////////////////////////////////////////////////////////////////////
-// CSize scalar operators 
+// CSize scalar operators
 
 #if !defined(_WTL_NO_SIZE_SCALAR) && defined(__ATLTYPES_H__)
 
 template <class Num>
-inline CSize operator *(SIZE s, Num n) 
+inline CSize operator *(SIZE s, Num n)
 {
 	return CSize((int)(s.cx * n), (int)(s.cy * n));
 };
@@ -57,10 +57,10 @@ template <class Num>
 inline void operator *=(SIZE & s, Num n)
 {
 	s = s * n;
-};	
+};
 
 template <class Num>
-inline CSize operator /(SIZE s, Num n) 
+inline CSize operator /(SIZE s, Num n)
 {
 	return CSize((int)(s.cx / n), (int)(s.cy / n));
 };
@@ -69,7 +69,7 @@ template <class Num>
 inline void operator /=(SIZE & s, Num n)
 {
 	s = s / n;
-};	
+};
 
 #endif // !defined(_WTL_NO_SIZE_SCALAR) && defined(__ATLTYPES_H__)
 
@@ -206,7 +206,7 @@ public:
 		return bRet;
 	}
 
-	// This function is deprecated because it is not safe. 
+	// This function is deprecated because it is not safe.
 	// Use the version below that accepts the buffer length.
 	__declspec(deprecated)
 	BOOL GetFromList(int /*nItemID*/, LPTSTR /*lpstrDocName*/)
@@ -439,7 +439,7 @@ public:
 	static LPCTSTR GetRegItemName()
 	{
 		// Note: This string is a format string used with wsprintf().
-		// Resulting formatted string must be m_cchItemNameLen or less 
+		// Resulting formatted string must be m_cchItemNameLen or less
 		// characters long, including the terminating null character.
 		return _T("Document%i");
 	}
@@ -842,7 +842,7 @@ public:
 ///////////////////////////////////////////////////////////////////////////////
 // CRegProperty and CRegPropertyImpl<> - properties stored in registry
 
-// How to use: Derive a class from CRegPropertyImpl, add data members 
+// How to use: Derive a class from CRegPropertyImpl, add data members
 // for properties, and add REGPROP map to map properties to registry value names.
 // You can then call Read() and Write() methods to read and write properties to/from registry.
 // You can also use CRegProperty class directly, for one time read/write, or for custom stuff.

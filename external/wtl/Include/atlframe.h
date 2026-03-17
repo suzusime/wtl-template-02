@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -117,11 +117,11 @@ public:
 				{
 					if(m_uCommonResourceID != 0)   // use it if not zero
 					{
-						m_wc.hIcon = (HICON)::LoadImage(ModuleHelper::GetResourceInstance(), 
-							MAKEINTRESOURCE(m_uCommonResourceID), IMAGE_ICON, 
+						m_wc.hIcon = (HICON)::LoadImage(ModuleHelper::GetResourceInstance(),
+							MAKEINTRESOURCE(m_uCommonResourceID), IMAGE_ICON,
 							::GetSystemMetrics(SM_CXICON), ::GetSystemMetrics(SM_CYICON), LR_DEFAULTCOLOR);
-						m_wc.hIconSm = (HICON)::LoadImage(ModuleHelper::GetResourceInstance(), 
-							MAKEINTRESOURCE(m_uCommonResourceID), IMAGE_ICON, 
+						m_wc.hIconSm = (HICON)::LoadImage(ModuleHelper::GetResourceInstance(),
+							MAKEINTRESOURCE(m_uCommonResourceID), IMAGE_ICON,
 							::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
 					}
 					m_atom = ::RegisterClassEx(&m_wc);
@@ -285,10 +285,10 @@ public:
 	HACCEL m_hAccel;
 
 // Constructor
-	CFrameWindowImplBase() : 
-		m_hWndToolBar(NULL), 
-		m_hWndStatusBar(NULL), 
-		m_hWndClient(NULL), 
+	CFrameWindowImplBase() :
+		m_hWndToolBar(NULL),
+		m_hWndStatusBar(NULL),
+		m_hWndClient(NULL),
 		m_hAccel(NULL)
 	{ }
 
@@ -325,7 +325,7 @@ public:
 		return hWnd;
 	}
 
-	static HWND CreateSimpleToolBarCtrl(HWND hWndParent, UINT nResourceID, BOOL bInitialSeparator = FALSE, 
+	static HWND CreateSimpleToolBarCtrl(HWND hWndParent, UINT nResourceID, BOOL bInitialSeparator = FALSE,
 			DWORD dwStyle = ATL_SIMPLE_TOOLBAR_STYLE, UINT nID = ATL_IDW_TOOLBAR)
 	{
 		HINSTANCE hInst = ModuleHelper::GetResourceInstance();
@@ -1014,7 +1014,7 @@ public:
 ///////////////////////////////////////////////////////////////////////////////
 // AtlCreateSimpleToolBar - helper for creating simple toolbars
 
-inline HWND AtlCreateSimpleToolBar(HWND hWndParent, UINT nResourceID, BOOL bInitialSeparator = FALSE, 
+inline HWND AtlCreateSimpleToolBar(HWND hWndParent, UINT nResourceID, BOOL bInitialSeparator = FALSE,
 		DWORD dwStyle = ATL_SIMPLE_TOOLBAR_STYLE, UINT nID = ATL_IDW_TOOLBAR)
 {
 	return CFrameWindowImplBase<>::CreateSimpleToolBarCtrl(hWndParent, nResourceID, bInitialSeparator, dwStyle, nID);
@@ -2237,7 +2237,7 @@ public:
 		for( ; pMap->m_nID != (WORD)-1; pMap++, pUIData++)
 		{
 			if(nID == (int)pMap->m_nID)
-			{		
+			{
 				pUIData->m_wState = (WORD)(dwState | pMap->m_wType);
 				m_wDirtyType |= pMap->m_wType;
 				break;   // found
@@ -2708,7 +2708,7 @@ public:
 			if(this->m_arrUIMap[i].m_nID == nID) // matching UI map element
 			{
 				WORD wType = this->m_arrUIMap[i].m_wType & ~t_wType;
-				if (wType != 0)   // has other types 
+				if (wType != 0)   // has other types
 				{
 					this->m_arrUIMap[i].m_wType = wType; // keep other types
 					return true;
@@ -2806,8 +2806,8 @@ public:
 		{
 			for(int e = 0; e < this->m_UIElements.GetSize(); e++)
 			{
-				if((this->m_UIElements[e].m_wType == CDynamicUpdateUI<T>::UPDUI_STATUSBAR) && 
-				   (this->m_arrUIMap[i].m_wType & CDynamicUpdateUI<T>::UPDUI_STATUSBAR) && 
+				if((this->m_UIElements[e].m_wType == CDynamicUpdateUI<T>::UPDUI_STATUSBAR) &&
+				   (this->m_arrUIMap[i].m_wType & CDynamicUpdateUI<T>::UPDUI_STATUSBAR) &&
 				   (this->m_arrUIData[i].m_wState & CDynamicUpdateUI<T>::UPDUI_STATUSBAR))
 				{
 					this->UIUpdateStatusBarElement(this->m_arrUIMap[i].m_nID, &this->m_arrUIData[i], this->m_UIElements[e].m_hWnd);
@@ -3249,7 +3249,7 @@ public:
 #endif // _WTL_DPI_SUPPORT
 
 // Implementation
-	bool DlgResize_PositionControl(int cxWidth, int cyHeight, RECT& rectGroup, _AtlDlgResizeData& data, bool bGroup, 
+	bool DlgResize_PositionControl(int cxWidth, int cyHeight, RECT& rectGroup, _AtlDlgResizeData& data, bool bGroup,
 	                               _AtlDlgResizeData* pDataPrev = NULL)
 	{
 		T* pT = static_cast<T*>(this);

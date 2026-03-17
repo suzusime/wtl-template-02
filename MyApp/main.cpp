@@ -1,30 +1,30 @@
-#include "MainWindow.h"
+ï»¿#include "MainWindow.h"
 
 CAppModule _Module;
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, PWSTR pCmdLine, int nCmdShow)
 {
-    // ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»
+    // ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–
     _Module.Init(NULL, hInstance);
 
-    // DPI”F¯‚ğ—LŒø‰»
+    // DPIèªè­˜ã‚’æœ‰åŠ¹åŒ–
     SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
 
-    // ƒƒbƒZ[ƒWƒ‹[ƒvƒIƒuƒWƒFƒNƒg‚ğì¬‚µ‚Ä“o˜^
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã—ã¦ç™»éŒ²
     CMessageLoop theLoop;
     _Module.AddMessageLoop(&theLoop);
 
-    // ƒEƒCƒ“ƒhƒE‚ğì¬‚µ‚Ä•\¦
+    // ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã‚’ä½œæˆã—ã¦è¡¨ç¤º
     CMainWindow wnd;
-    wnd.Create(NULL, CWindow::rcDefault, L"‚Í‚ë‚Í‚ë`",
+    wnd.Create(NULL, CWindow::rcDefault, L"ã¯ã‚ã¯ã‚ï½",
         WS_OVERLAPPEDWINDOW | WS_VISIBLE);
     wnd.ShowWindow(nCmdShow);
     wnd.UpdateWindow();
 
-    // ƒƒbƒZ[ƒWƒ‹[ƒv‚ğŠJn
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—ã‚’é–‹å§‹
     int nRet = theLoop.Run();
 
-    // Œã•Ğ•t‚¯
+    // å¾Œç‰‡ä»˜ã‘
     _Module.RemoveMessageLoop();
     _Module.Term();
 

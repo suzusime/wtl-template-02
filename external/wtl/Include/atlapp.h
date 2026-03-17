@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -1056,7 +1056,7 @@ public:
 					break;
 			}
 		}
-		// This handle should be valid now. If it isn't, 
+		// This handle should be valid now. If it isn't,
 		// check if _Module.Term was called first (it shouldn't)
 		if(::CloseHandle(m_hEventShutdown))
 			m_hEventShutdown = NULL;

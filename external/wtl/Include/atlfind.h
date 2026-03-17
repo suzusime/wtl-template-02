@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -686,8 +686,8 @@ public:
 		ATLASSERT(pT->m_hWnd != NULL);
 
 #ifndef _UNICODE
-		// If common controls version 6 is in use (such as via theming), then EM_GETHANDLE 
-		// will always return a UNICODE string. You're really not supposed to superclass 
+		// If common controls version 6 is in use (such as via theming), then EM_GETHANDLE
+		// will always return a UNICODE string. You're really not supposed to superclass
 		// or subclass common controls with an ANSI windows procedure.
 		DWORD dwMajor = 0, dwMinor = 0;
 		HRESULT hRet = ATL::AtlGetCommCtrlVersion(&dwMajor, &dwMinor);

@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -273,13 +273,13 @@ public:
 #endif // _WTL_CMDBAR_VISTA_MENUS
 
 // Constructor/destructor
-	CCommandBarCtrlImpl() : 
-			m_hMenu(NULL), 
-			m_hImageList(NULL), 
+	CCommandBarCtrlImpl() :
+			m_hMenu(NULL),
+			m_hImageList(NULL),
 			m_dwExtendedStyle(CBR_EX_TRANSPARENT | CBR_EX_SHAREMENU | CBR_EX_TRACKALWAYS),
 			m_wndParent(this, 1),
-			m_bMenuActive(false), 
-			m_bAttachedMenu(false), 
+			m_bMenuActive(false),
+			m_bAttachedMenu(false),
 			m_bImagesVisible(true),
 			m_bPopupItem(false),
 			m_bContextMenu(false),
@@ -296,7 +296,7 @@ public:
 			m_bSkipPostDown(false),
 			m_bVistaMenus(false),
 			m_nPopBtn(-1),
-			m_nNextPopBtn(-1), 
+			m_nNextPopBtn(-1),
 			m_clrMask(RGB(192, 192, 192)),
 			m_uSysKey(0),
 			m_hWndFocus(NULL),
@@ -1498,7 +1498,7 @@ public:
 				bHandled = TRUE;
 				lRet = MAKELRESULT(wMnem, nRetCode);
 			}
-		} 
+		}
 		else if(!m_bMenuActive)
 		{
 			int nBtn = 0;
@@ -1679,9 +1679,9 @@ public:
 	LRESULT OnParentSysCommand(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& bHandled)
 	{
 		bHandled = FALSE;
-		if(((m_uSysKey == VK_MENU) 
+		if(((m_uSysKey == VK_MENU)
 			|| ((m_uSysKey == VK_F10) && !(::GetKeyState(VK_SHIFT) & 0x80))
-			|| (m_uSysKey == VK_SPACE)) 
+			|| (m_uSysKey == VK_SPACE))
 			&& (wParam == SC_KEYMENU))
 		{
 			T* pT = static_cast<T*>(this);
@@ -1787,7 +1787,7 @@ public:
 					if(m_bFlatMenus)
 					{
 						bool bDisabled = ((lpTBCustomDraw->nmcd.uItemState & CDIS_DISABLED) == CDIS_DISABLED);
-						if(!bDisabled && (((lpTBCustomDraw->nmcd.uItemState & CDIS_HOT) == CDIS_HOT) || 
+						if(!bDisabled && (((lpTBCustomDraw->nmcd.uItemState & CDIS_HOT) == CDIS_HOT) ||
 							(lpTBCustomDraw->nmcd.uItemState & CDIS_SELECTED) == CDIS_SELECTED))
 						{
 							::FillRect(lpTBCustomDraw->nmcd.hdc, &lpTBCustomDraw->nmcd.rc, ::GetSysColorBrush(COLOR_MENUHILIGHT));
@@ -2386,8 +2386,8 @@ public:
 		}
 		else
 		{
-			size.cx = ::GetSystemMetrics(SM_CXMENUCHECK); 
-			size.cy = ::GetSystemMetrics(SM_CYMENUCHECK); 
+			size.cx = ::GetSystemMetrics(SM_CXMENUCHECK);
+			size.cy = ::GetSystemMetrics(SM_CYMENUCHECK);
 			bmp.CreateCompatibleBitmap(dc, size.cx, size.cy);
 			ATLASSERT(bmp.m_hBitmap != NULL);
 		}
@@ -2443,7 +2443,7 @@ public:
 		int cy = rcDest.bottom - rcDest.top;
 		if(hBmpCheck != NULL)
 		{
-			// build mask based on transparent color	
+			// build mask based on transparent color
 			dcSource.SetBkColor(m_clrMask);
 			dcMask.SetBkColor(clrBlack);
 			dcMask.SetTextColor(clrWhite);
@@ -3252,14 +3252,14 @@ public:
 	HTHEME m_hTheme;
 
 // Constructor/destructor
-	CMDICommandBarCtrlImpl() : 
-			m_wndMDIClient(this, 2), m_bChildMaximized(false), 
-			m_hWndChildMaximized(NULL), m_hIconChildMaximized(NULL), 
+	CMDICommandBarCtrlImpl() :
+			m_wndMDIClient(this, 2), m_bChildMaximized(false),
+			m_hWndChildMaximized(NULL), m_hIconChildMaximized(NULL),
 			m_nBtnPressed(-1), m_nBtnWasPressed(-1),
 			m_cxyOffset(2),
 			m_cxIconWidth(16), m_cyIconHeight(16),
 			m_cxBtnWidth(16), m_cyBtnHeight(14),
-			m_cxLeft(20), m_cxRight(55), 
+			m_cxLeft(20), m_cxRight(55),
 			m_hTheme(NULL)
 	{ }
 
@@ -3500,7 +3500,7 @@ public:
 			ATLTRACE2(atlTraceUI, 0, _T("MDI CmdBar - LButtonDown: icon\n"));
 #endif
 			CMenuHandle menu = ::GetSystemMenu(m_hWndChildMaximized, FALSE);
-			UINT uRet = (UINT)menu.TrackPopupMenu(TPM_LEFTBUTTON | TPM_VERTICAL | TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD |  
+			UINT uRet = (UINT)menu.TrackPopupMenu(TPM_LEFTBUTTON | TPM_VERTICAL | TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD |
 				TPM_VERPOSANIMATION, this->m_bLayoutRTL ? rect.right : rect.left, rect.bottom, m_hWndChildMaximized);
 
 			// eat next message if click is on the same button

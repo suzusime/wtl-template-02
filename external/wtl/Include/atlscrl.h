@@ -1,4 +1,4 @@
-// Windows Template Library - WTL version 10.0
+﻿// Windows Template Library - WTL version 10.0
 // Copyright (C) Microsoft Corporation, WTL Team. All rights reserved.
 //
 // This file is a part of the Windows Template Library.
@@ -68,8 +68,8 @@ public:
 	DWORD m_dwExtendedStyle;   // scroll specific extended styles
 
 // Constructor
-	CScrollImpl() : m_zDelta(0), m_nWheelLines(3), 
-			m_zHDelta(0), m_nHWheelChars(3), 
+	CScrollImpl() : m_zDelta(0), m_nWheelLines(3),
+			m_zHDelta(0), m_nHWheelChars(3),
 			m_uScrollFlags(0U), m_dwExtendedStyle(0)
 	{
 		m_ptOffset.x = 0;
@@ -1228,13 +1228,13 @@ typedef CFSBWindowT<ATL::CWindow>   CFSBWindow;
 // The zoom modes that can be set with the SetZoomMode method
 enum
 {
-	ZOOMMODE_OFF, 
+	ZOOMMODE_OFF,
 	ZOOMMODE_IN,   // If left mouse button is clicked or dragged, zoom in on point clicked or rectangle dragged.
 	ZOOMMODE_OUT   // If left mouse button clicked, zoom out on point clicked.
 };
 
 // Notification to parent that zoom scale changed as a result of user mouse action.
-#define ZSN_ZOOMCHANGED	(NM_FIRST - 50) 
+#define ZSN_ZOOMCHANGED	(NM_FIRST - 50)
 
 template <class T>
 class CZoomScrollImpl : public CScrollImpl< T >
@@ -1254,14 +1254,14 @@ public:
 	};
 
 // Data members
-	SIZE m_sizeLogAll;		
-	SIZE m_sizeLogLine;	
+	SIZE m_sizeLogAll;
+	SIZE m_sizeLogLine;
 	SIZE m_sizeLogPage;
 	float m_fZoomScale;
 	float m_fZoomScaleMin;
 	float m_fZoomScaleMax;
 	float m_fZoomDelta;   // Used in ZOOMMODE_IN and ZOOMMODE_OUT on left-button click.
-	int m_nZoomMode;		
+	int m_nZoomMode;
 	RECT m_rcTrack;
 	bool m_bTracking;
 
@@ -1269,7 +1269,7 @@ public:
 	ATL::CSimpleArray<_ChildPlacement> m_arrChildren;
 
 // Constructor
-	CZoomScrollImpl(): m_fZoomScale(1.0f), m_fZoomScaleMin(0.1f), m_fZoomScaleMax(100.0f), m_fZoomDelta(0.5f), 
+	CZoomScrollImpl(): m_fZoomScale(1.0f), m_fZoomScaleMin(0.1f), m_fZoomScaleMax(100.0f), m_fZoomDelta(0.5f),
 	                   m_nZoomMode(ZOOMMODE_OFF), m_bTracking(false), m_bZoomChildren(false)
 	{
 		m_sizeLogAll.cx = 0;
@@ -1501,11 +1501,11 @@ public:
 		}
 
 		ATLASSERT((size.cx > 0) && (size.cy > 0));
-		
+
 		float fScaleH = (float)(this->m_sizeClient.cx  + 1) / (float)size.cx;
 		float fScaleV = (float)(this->m_sizeClient.cy + 1) / (float)size.cy;
 		float fZoomScale = __min(fScaleH, fScaleV) * m_fZoomScale;
-		pT->Zoom(pt, fZoomScale);		
+		pT->Zoom(pt, fZoomScale);
 	}
 
 	void Zoom(float fZoomScale, bool bCenter = true)
@@ -1533,7 +1533,7 @@ public:
 		SIZE sizeAll = {};
 		sizeAll.cx = (int)((float)m_sizeLogAll.cx * fZoomScale);
 		sizeAll.cy = (int)((float)m_sizeLogAll.cy * fZoomScale);
-		
+
 		// Update scroll bars and window
 		CScrollImpl< T >::SetScrollSize(sizeAll);
 
@@ -1544,11 +1544,11 @@ public:
 			{
 				ATLASSERT(::IsWindow(m_arrChildren[i].hWnd));
 
-				::SetWindowPos(m_arrChildren[i].hWnd, NULL, 
-					(int)((float)m_arrChildren[i].x * fZoomScale + 0.5f), 
-					(int)((float)m_arrChildren[i].y * fZoomScale + 0.5f), 
-					(int)((float)m_arrChildren[i].cx * fZoomScale + 0.5f), 
-					(int)((float)m_arrChildren[i].cy * fZoomScale + 0.5f), 
+				::SetWindowPos(m_arrChildren[i].hWnd, NULL,
+					(int)((float)m_arrChildren[i].x * fZoomScale + 0.5f),
+					(int)((float)m_arrChildren[i].y * fZoomScale + 0.5f),
+					(int)((float)m_arrChildren[i].cx * fZoomScale + 0.5f),
+					(int)((float)m_arrChildren[i].cy * fZoomScale + 0.5f),
 					SWP_NOZORDER | SWP_NOACTIVATE);
 			}
 		}
@@ -1604,7 +1604,7 @@ public:
 		ATLASSERT(lpPoints);
 		T* pT = static_cast<T*>(this);
 		ATLASSERT(::IsWindow(pT->m_hWnd));
-	
+
 		CWindowDC dc(pT->m_hWnd);
 		pT->PrepareDC(dc.m_hDC);
 		dc.LPtoDP(lpPoints, nCount);
@@ -1614,7 +1614,7 @@ public:
 	{
 		pt.x += this->m_ptOffset.x;
 		pt.y += this->m_ptOffset.y;
-	}	 
+	}
 
 	void DeviceToClient(POINT &pt)
 	{
@@ -1633,19 +1633,19 @@ public:
 		{
 			xOfs = 0;
 		}
-		else 
+		else
 		{
 			int xMax = __max((int)(this->m_sizeAll.cx - rect.right), 0);
 			if(xOfs > xMax)
 				xOfs = xMax;
 		}
-		
+
 		int yOfs = pt.y - (rect.bottom / 2) + this->m_ptOffset.y;
 		if(yOfs < 0)
 		{
 			yOfs = 0;
 		}
-		else 
+		else
 		{
 			int yMax = __max((int)(this->m_sizeAll.cy - rect.bottom), 0);
 			if(yOfs > yMax)
@@ -1672,7 +1672,7 @@ public:
 
 	void NormalizeRect(RECT& rc)
 	{
-		if(rc.left > rc.right) 
+		if(rc.left > rc.right)
 		{
 			int r = rc.right;
 			rc.right = rc.left;
@@ -1842,7 +1842,7 @@ public:
 				}
 				::MapWindowPoints(pT->m_hWnd, NULL, (LPPOINT)&rcClip, 2);
 				::ClipCursor(&rcClip);
-			}	
+			}
 		}
 
 		bHandled = FALSE;
@@ -1897,7 +1897,7 @@ public:
 
 		bHandled = FALSE;
 		return 0;
-	}	
+	}
 };
 
 ///////////////////////////////////////////////////////////////////////////////
