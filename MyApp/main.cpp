@@ -4,11 +4,11 @@ CAppModule _Module;
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, PWSTR pCmdLine, int nCmdShow)
 {
-    // アプリケーションモジュールの初期化
-    _Module.Init(NULL, hInstance);
-
     // DPI認識を有効化
     SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+
+    // アプリケーションモジュールの初期化
+    _Module.Init(NULL, hInstance);
 
     // メッセージループオブジェクトを作成して登録
     CMessageLoop theLoop;

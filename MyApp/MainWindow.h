@@ -24,14 +24,17 @@ private:
         return 0;
     }
 
-    LRESULT OnPaint(HDC hdc)
+    LRESULT OnPaint(CDCHandle /*dc*/)
     {
+        CPaintDC dc(m_hWnd);
+
+        // 描画コードをここに記述
+
         return 0;
     }
 
-    LRESULT OnDestroy()
+    void OnDestroy()
     {
         PostQuitMessage(0);
-        return 0;
     }
 };
