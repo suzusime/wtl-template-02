@@ -1,4 +1,4 @@
-root = true
+﻿root = true
 
 [*.{c,cc,cpp,cxx,h,hh,hpp,hxx}]
 end_of_line = lf
@@ -7,6 +7,10 @@ indent_style = space
 indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
+
+[*.rc]
+end_of_line = lf
+charset = utf-8-bom
 
 [*.{md,txt}]
 end_of_line = lf
