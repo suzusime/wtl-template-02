@@ -12,13 +12,13 @@ class CMainWindow : public CWindowImpl<CMainWindow>
 {
 public:
     DECLARE_WND_CLASS(L"MyMainWindowClass")
-private:
     BEGIN_MSG_MAP_EX(CMainWindow)
         MSG_WM_PAINT(OnPaint)
         MSG_WM_CREATE(OnCreate)
         MSG_WM_DESTROY(OnDestroy)
     END_MSG_MAP()
 
+private:
     LRESULT OnCreate(LPCREATESTRUCT lpCreateStruct)
     {
         return 0;
