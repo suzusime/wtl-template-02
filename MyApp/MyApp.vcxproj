@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="wtlhelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MyApp.rc" />

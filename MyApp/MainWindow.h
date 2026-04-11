@@ -5,6 +5,7 @@
 #include <atlwin.h>
 #include <atlcrack.h>
 
+#include "wtlhelper.h"
 
 extern CAppModule _Module;
 
