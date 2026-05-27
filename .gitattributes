@@ -1,7 +1,23 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
+* text=auto eol=crlf
+
+# C/C++ ソース：CRLF で統一
+*.c     text eol=crlf
+*.cc    text eol=crlf
+*.cpp   text eol=crlf
+*.cxx   text eol=crlf
+*.h     text eol=crlf
+*.hh    text eol=crlf
+*.hpp   text eol=crlf
+*.hxx   text eol=crlf
+
+# リソースヘッダ
+resource.h text eol=crlf
+
+# リソースファイル：UTF-16 なのでテキスト変換は無効
+*.rc -text
 
 ###############################################################################
 # Set default behavior for command prompt diff.
