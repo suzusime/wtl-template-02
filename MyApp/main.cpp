@@ -15,9 +15,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, PWSTR pCmd
     _Module.AddMessageLoop(&theLoop);
 
     // ウインドウを作成して表示
-    CMainWindow wnd;
-    wnd.Create(NULL, CWindow::rcDefault, L"はろはろ～",
-        WS_OVERLAPPEDWINDOW | WS_VISIBLE);
+    CMainDlg wnd;
+    wnd.Create(NULL);
     wnd.ShowWindow(nCmdShow);
     wnd.UpdateWindow();
 

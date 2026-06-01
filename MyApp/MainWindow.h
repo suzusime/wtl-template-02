@@ -5,24 +5,28 @@
 #include <atlwin.h>
 #include <atlcrack.h>
 
+#include "resource.h"
 #include "wtlhelper.h"
 
 extern CAppModule _Module;
 
-class CMainWindow : public CWindowImpl<CMainWindow>
+class CMainDlg : public CDialogImpl<CMainDlg>
 {
 public:
-    DECLARE_WND_CLASS(L"MyMainWindowClass")
-    BEGIN_MSG_MAP_EX(CMainWindow)
+    enum { IDD = IDD_MAINDLG };
+    BEGIN_MSG_MAP_EX(CMainDlg)
+        MSG_WM_INITDIALOG(OnInitDialog)
         MSG_WM_PAINT(OnPaint)
-        MSG_WM_CREATE(OnCreate)
+        MSG_WM_CLOSE(OnClose)
         MSG_WM_DESTROY(OnDestroy)
     END_MSG_MAP()
 
 private:
-    LRESULT OnCreate(LPCREATESTRUCT lpCreateStruct)
+    BOOL OnInitDialog(CWindow /*wndFocus*/, LPARAM /*lInitParam*/)
     {
-        return 0;
+        // 初期化コードをここに記述
+
+        return TRUE;
     }
 
     LRESULT OnPaint(CDCHandle /*dc*/)
@@ -32,6 +36,14 @@ private:
         // 描画コードをここに記述
 
         return 0;
+    }
+
+    void OnClose()
+    {
+        // モードレスダイアログの場合は DestroyWindow() を呼び出す
+        DestroyWindow();
+        // モーダルダイアログの場合は EndDialog() を呼び出す
+        // EndDialog(IDCANCEL);
     }
 
     void OnDestroy()
